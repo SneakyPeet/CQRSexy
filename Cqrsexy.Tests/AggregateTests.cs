@@ -95,9 +95,9 @@ namespace Cqrsexy.Tests
         {
             return new List<Event>
                           {
-                              new TestEventApplied("A") { Version = 2 },
+                              new TestEventApplied("A") { Version = 1 },
                               new TestEventApplied("C") { Version = 3 },
-                              new TestEventApplied("B") { Version = 1 }
+                              new TestEventApplied("B") { Version = 2 }
                           };
         }
 
@@ -120,7 +120,7 @@ namespace Cqrsexy.Tests
                 ApplyChanges(new NonStateChangeEventApplied());
             }
 
-            private void Apply(TestEventApplied evt)
+            private void OnTestEventApplied(TestEventApplied evt)
             {
                 Foo = Foo + evt.Prop;
             }

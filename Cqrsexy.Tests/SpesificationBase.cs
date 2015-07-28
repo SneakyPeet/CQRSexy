@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using Cqrsexy.Core;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Cqrsexy.Tests
 {

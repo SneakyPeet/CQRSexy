@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace Cqrsexy.Core
 {
@@ -37,12 +39,21 @@ namespace Cqrsexy.Core
         {
             changes.Add(evt);
             Apply(evt);
-        }
-
-        private void Apply(Event evt)
-        {
             Version++;
             evt.Version = Version;
+        }
+
+        /// <summary>
+        /// Applies event to the aggregate if a method on the concrete class following convention "On<EventName> can be found
+        /// </summary>
+        /// <param name="evt"></param>/
+        private void Apply(Event evt)
+        {
+            var apply = this.GetType().GetMethod("On" + evt.GetType().Name, BindingFlags.NonPublic | BindingFlags.Instance);
+            if(apply != null)
+            {
+                apply.Invoke(this, new object[] { evt });
+            }
         }
 
         public IEnumerable<Event> GetUncommitedEvents()
@@ -57,7 +68,7 @@ namespace Cqrsexy.Core
 
         public void LoadFromHistory(List<Event> history)
         {
-            foreach(var evt in history)
+            foreach(var evt in history.OrderBy(e => e.Version))
             {
                 Apply(evt);
             }
