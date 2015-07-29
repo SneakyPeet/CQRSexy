@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Cqrsexy.Core;
+using Cqrsexy.Core.Infrastructure;
 using NUnit.Framework;
 
 namespace Cqrsexy.Tests

@@ -40,10 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Aggregate.cs" />
-    <Compile Include="Event.cs" />
+    <Compile Include="Infrastructure\Aggregate.cs" />
+    <Compile Include="Infrastructure\Event.cs" />
+    <Compile Include="LeaveApplication\CreateLeaveEntry.cs" />
+    <Compile Include="Infrastructure\IIdentityFactory.cs" />
+    <Compile Include="LeaveApplication\Employee.cs" />
+    <Compile Include="LeaveApplication\ILeaveEntryFactory.cs" />
+    <Compile Include="Infrastructure\IRepository.cs" />
+    <Compile Include="LeaveApplication\LeaveApi.cs" />
+    <Compile Include="LeaveApplication\LeaveEntryCreated.cs" />
+    <Compile Include="LeaveApplication\LeaveEntry.cs" />
+    <Compile Include="LeaveApplication\LeaveType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

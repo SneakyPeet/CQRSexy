@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Cqrsexy.Core
+namespace Cqrsexy.Core.Infrastructure
 {
     public abstract class Aggregate
     {
@@ -11,8 +12,10 @@ namespace Cqrsexy.Core
         protected Aggregate()
         {
             this.changes = new List<Event>();
-            Version = 0;
+            this.Version = 0;
         }
+
+        public Guid Id { get; protected set; }
 
         public string Name
         {
@@ -31,16 +34,16 @@ namespace Cqrsexy.Core
         {
             get
             {
-                return Version - changes.Count;
+                return this.Version - this.changes.Count;
             }
         }
 
         protected void ApplyChanges(Event evt)
         {
-            changes.Add(evt);
-            Apply(evt);
-            Version++;
-            evt.Version = Version;
+            this.changes.Add(evt);
+            this.Apply(evt);
+            this.Version++;
+            evt.Version = this.Version;
         }
 
         /// <summary>
@@ -58,19 +61,19 @@ namespace Cqrsexy.Core
 
         public IEnumerable<Event> GetUncommitedEvents()
         {
-            return changes.AsReadOnly();
+            return this.changes.AsReadOnly();
         }
 
         public void Commit()
         {
-            changes.Clear();
+            this.changes.Clear();
         }
 
         public void LoadFromHistory(List<Event> history)
         {
             foreach(var evt in history.OrderBy(e => e.Version))
             {
-                Apply(evt);
+                this.Apply(evt);
             }
         }
     }

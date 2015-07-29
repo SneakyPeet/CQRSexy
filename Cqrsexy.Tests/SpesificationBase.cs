@@ -15,4 +15,5 @@ namespace Cqrsexy.Tests
         protected virtual void Given() { }
         protected virtual void When() { }
     }
+
 }
