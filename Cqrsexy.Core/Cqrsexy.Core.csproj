@@ -45,15 +45,20 @@
     <Compile Include="LeaveApplication\CreateLeaveEntry.cs" />
     <Compile Include="Infrastructure\IIdentityFactory.cs" />
     <Compile Include="LeaveApplication\Employee.cs" />
-    <Compile Include="LeaveApplication\ILeaveEntryFactory.cs" />
     <Compile Include="Infrastructure\IRepository.cs" />
+    <Compile Include="LeaveApplication\ILeaveTypeFactory.cs" />
     <Compile Include="LeaveApplication\LeaveApi.cs" />
     <Compile Include="LeaveApplication\LeaveEntryCreated.cs" />
     <Compile Include="LeaveApplication\LeaveEntry.cs" />
     <Compile Include="LeaveApplication\LeaveType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Cqrsexy.Events\Cqrsexy.Events.fsproj">
+      <Project>{b341082b-e7ac-4cda-a9c1-1a7551e0626a}</Project>
+      <Name>Cqrsexy.Events</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

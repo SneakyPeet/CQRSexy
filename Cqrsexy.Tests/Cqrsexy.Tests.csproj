@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AggregateTests.cs" />
+    <Compile Include="EventTests.cs" />
     <Compile Include="SpesificationBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -55,6 +56,10 @@
     <ProjectReference Include="..\Cqrsexy.Core\Cqrsexy.Core.csproj">
       <Project>{7fe388f9-085f-41dd-ba8d-244bd39b968e}</Project>
       <Name>Cqrsexy.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrsexy.Events\Cqrsexy.Events.fsproj">
+      <Project>{b341082b-e7ac-4cda-a9c1-1a7551e0626a}</Project>
+      <Name>Cqrsexy.Events</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -7,19 +7,22 @@ namespace Cqrsexy.Core.LeaveApplication
     {
         private readonly IRepository<LeaveEntry> repo;
         private readonly IRepository<Employee> employeeRepo;
-        private readonly ILeaveEntryFactory factory;
+        private readonly ILeaveTypeFactory typeFactory;
+        private readonly IIdentityFactory idFactory;
 
-        public LeaveApplicationApi(IRepository<LeaveEntry> repo, IRepository<Employee> employeeRepo, ILeaveEntryFactory factory)
+        public LeaveApplicationApi(IRepository<LeaveEntry> repo, IRepository<Employee> employeeRepo, ILeaveTypeFactory typeFactory, IIdentityFactory idFactory)
         {
             this.repo = repo;
             this.employeeRepo = employeeRepo;
-            this.factory = factory;
+            this.typeFactory = typeFactory;
+            this.idFactory = idFactory;
         }
 
         public Guid Handle(CreateLeaveEntry cmd)
         {
             var employee = employeeRepo.GetById(cmd.EmployeeId);
-            var leaveEntry = factory.Make(cmd, employee);
+            var id = idFactory.Make();
+            var leaveEntry = new LeaveEntry(id, employee, cmd, typeFactory);
             repo.Save(leaveEntry);
             return leaveEntry.Id;
         }

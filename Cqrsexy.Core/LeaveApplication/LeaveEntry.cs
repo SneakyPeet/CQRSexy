@@ -1,25 +1,30 @@
 using System;
 using Cqrsexy.Core.Infrastructure;
+using Cqrsexy.Events;
 
 namespace Cqrsexy.Core.LeaveApplication
 {
     public class LeaveEntry : Aggregate
     {
         private LeaveType leaveType;
+        private Employee employee;
+        private readonly ILeaveTypeFactory typeFactory;
 
-        public LeaveEntry(Guid id, Employee employee, DateTime startDate, DateTime endDate, LeaveType leaveType)
+        public LeaveEntry(Guid id, Employee employee, CreateLeaveEntry cmd, ILeaveTypeFactory typeFactory) : base(id)
         {
-            if(startDate >= endDate)
+            if(cmd.StartDate >= cmd.EndDate)
             {
                 throw new ArgumentException("Leave Start Date should be before Leave End Date");
             }
-            ApplyChanges(new LeaveEntryCreated(id, employee, startDate, endDate, leaveType));
+            this.employee = employee;
+            this.typeFactory = typeFactory;
+            ApplyChanges(new LeaveEntryCreated(employee.Id, cmd.StartDate, cmd.EndDate, cmd.LeaveType));
         }
+        
 
         public void OnLeaveEntryCreated(LeaveEntryCreated evt)
         {
-            Id = evt.Id;
-            leaveType = evt.LeaveType;
+            leaveType = typeFactory.Make(evt.LeaveType);
         }
     }
 }

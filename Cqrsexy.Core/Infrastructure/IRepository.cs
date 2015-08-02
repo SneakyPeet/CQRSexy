@@ -7,4 +7,5 @@ namespace Cqrsexy.Core.Infrastructure
         T GetById(Guid guid);
         void Save(T aggregate);
     }
+
 }

@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using Cqrsexy.Core;
 using Cqrsexy.Core.Infrastructure;
+using Cqrsexy.Events;
 using NUnit.Framework;
 
 namespace Cqrsexy.Tests
@@ -69,15 +70,6 @@ namespace Cqrsexy.Tests
         }
 
         [Test]
-        public void ChangesShouldHaveTheCorrectVersion()
-        {
-            aggregate.LoadFromHistory(MakeHistory());
-            aggregate.ApplyTestEvent();
-            var change = aggregate.GetUncommitedEvents().Single();
-            Assert.AreEqual(4, change.Version);
-        }
-
-        [Test]
         public void EventsShouldBeAppliedInOrder()
         {
             aggregate.LoadFromHistory(MakeHistory());
@@ -92,13 +84,13 @@ namespace Cqrsexy.Tests
             aggregate.ApplyNonStateChangeEvent();
         }
 
-        private List<Event> MakeHistory()
+        private List<IEvent> MakeHistory()
         {
-            return new List<Event>
+            return new List<IEvent>
                           {
-                              new TestEventApplied("A") { Version = 1 },
-                              new TestEventApplied("C") { Version = 3 },
-                              new TestEventApplied("B") { Version = 2 }
+                              new TestEventApplied("A"),
+                              new TestEventApplied("C"),
+                              new TestEventApplied("B")
                           };
         }
 
@@ -125,9 +117,11 @@ namespace Cqrsexy.Tests
             {
                 Foo = Foo + evt.Prop;
             }
+
+            public TestAggregate() : base(new Guid()) {}
         }
 
-        class TestEventApplied : Event
+        class TestEventApplied : IEvent
         {
             public readonly string Prop;
 
@@ -137,7 +131,7 @@ namespace Cqrsexy.Tests
             }
         }
 
-        class NonStateChangeEventApplied : Event
+        class NonStateChangeEventApplied : IEvent
         {
             
         }
