@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7FE388F9-085F-41DD-BA8D-244BD39B968E}</ProjectGuid>
+    <ProjectGuid>{6E6228F7-F4E2-4F70-8859-E9D898C15131}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cqrsexy.Core</RootNamespace>
-    <AssemblyName>Cqrsexy.Core</AssemblyName>
+    <RootNamespace>Cqrsexy.Persistence</RootNamespace>
+    <AssemblyName>Cqrsexy.Persistence</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,14 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SharpTestsEx, Version=1.1.1.0, Culture=neutral, PublicKeyToken=8c60d8070630b1c1, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpTestsEx.1.1.1\lib\SharpTestsEx.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SharpTestsEx.Mvc, Version=1.1.1.0, Culture=neutral, PublicKeyToken=8c60d8070630b1c1, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpTestsEx.1.1.1\lib\SharpTestsEx.Mvc.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,31 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\Aggregate.cs" />
-    <Compile Include="Infrastructure\Handles.cs" />
-    <Compile Include="Infrastructure\IEventStoreUnitOfWork.cs" />
-    <Compile Include="Infrastructure\IIdentityFactory.cs" />
-    <Compile Include="Infrastructure\IUnitOfWork.cs" />
-    <Compile Include="LeaveApplication\Employee.cs" />
-    <Compile Include="Infrastructure\IRepository.cs" />
-    <Compile Include="LeaveApplication\ILeaveTypeFactory.cs" />
-    <Compile Include="LeaveApplication\LeaveApi.cs" />
-    <Compile Include="LeaveApplication\LeaveEntry.cs" />
-    <Compile Include="LeaveApplication\LeaveType.cs" />
+    <Compile Include="AggregateAlreadyAddedToUnitOfWork.cs" />
+    <Compile Include="EventStoreRepository.cs" />
+    <Compile Include="EventStoreUnitOfWork.cs" />
+    <Compile Include="IEventStoreLoader.cs" />
+    <Compile Include="IEventStorePresister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cqrsexy.Commands\Cqrsexy.Commands.fsproj">
-      <Project>{372d417d-c888-4c3e-bd1c-4d00ef0fbaca}</Project>
-      <Name>Cqrsexy.Commands</Name>
+    <ProjectReference Include="..\Cqrsexy.Core\Cqrsexy.Core.csproj">
+      <Project>{7fe388f9-085f-41dd-ba8d-244bd39b968e}</Project>
+      <Name>Cqrsexy.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Cqrsexy.Events\Cqrsexy.Events.fsproj">
-      <Project>{b341082b-e7ac-4cda-a9c1-1a7551e0626a}</Project>
-      <Name>Cqrsexy.Events</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

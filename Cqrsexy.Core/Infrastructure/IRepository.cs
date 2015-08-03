@@ -2,10 +2,9 @@ using System;
 
 namespace Cqrsexy.Core.Infrastructure
 {
-    public interface IRepository<T> where T : Aggregate
+    public interface IRepository
     {
-        T GetById(Guid guid);
-        void Save(T aggregate);
+        T GetById<T>(Guid id) where T : Aggregate;
+        void Add(Aggregate aggregate);
     }
-
 }

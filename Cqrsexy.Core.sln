@@ -11,6 +11,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Cqrsexy.Events", "Cqrsexy.E
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Cqrsexy.Commands", "Cqrsexy.Commands\Cqrsexy.Commands.fsproj", "{372D417D-C888-4C3E-BD1C-4D00EF0FBACA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cqrsexy.Persistence", "Cqrsexy.Persistence\Cqrsexy.Persistence.csproj", "{6E6228F7-F4E2-4F70-8859-E9D898C15131}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{372D417D-C888-4C3E-BD1C-4D00EF0FBACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{372D417D-C888-4C3E-BD1C-4D00EF0FBACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{372D417D-C888-4C3E-BD1C-4D00EF0FBACA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E6228F7-F4E2-4F70-8859-E9D898C15131}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E6228F7-F4E2-4F70-8859-E9D898C15131}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E6228F7-F4E2-4F70-8859-E9D898C15131}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E6228F7-F4E2-4F70-8859-E9D898C15131}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

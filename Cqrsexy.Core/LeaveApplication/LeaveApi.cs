@@ -4,25 +4,22 @@ using Cqrsexy.Core.Infrastructure;
 
 namespace Cqrsexy.Core.LeaveApplication
 {
-    public class LeaveApplicationApi
+    public class LeaveApplicationApi : Handles<CreateLeaveEntry>
     {
-        private readonly IRepository<LeaveEntry> repo;
-        private readonly IRepository<Employee> employeeRepo;
+        private readonly IRepository repo;
         private readonly ILeaveTypeFactory typeFactory;
 
-        public LeaveApplicationApi(IRepository<LeaveEntry> repo, IRepository<Employee> employeeRepo, ILeaveTypeFactory typeFactory)
+        public LeaveApplicationApi(IRepository repo, ILeaveTypeFactory typeFactory)
         {
             this.repo = repo;
-            this.employeeRepo = employeeRepo;
             this.typeFactory = typeFactory;
         }
 
-        public Guid Handle(CreateLeaveEntry cmd)
+        public void Handle(CreateLeaveEntry cmd)
         {
-            var employee = employeeRepo.GetById(cmd.EmployeeId);
+            var employee = repo.GetById<Employee>(cmd.EmployeeId);
             var leaveEntry = employee.ApplyForLeave(cmd.StartDate, cmd.EndDate, cmd.LeaveType);
-            //HowToSave?
-            throw new NotImplementedException();
+            repo.Add(leaveEntry);
         }
     }
 }
