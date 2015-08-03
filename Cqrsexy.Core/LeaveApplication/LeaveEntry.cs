@@ -19,7 +19,7 @@ namespace Cqrsexy.Core.LeaveApplication
             }
             //this.employee = employee;
             //this.typeFactory = typeFactory;
-            //ApplyChanges(new LeaveEntryCreated(new Guid(), cmd.StartDate, cmd.EndDate, cmd.LeaveType));
+            ApplyChanges(new LeaveEntryCreated(new Guid(), startDate, endDate, leaveType));
         }
 
         //public void OnLeaveEntryCreated(LeaveEntryCreated evt)

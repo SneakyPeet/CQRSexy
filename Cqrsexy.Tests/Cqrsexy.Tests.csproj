@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="AggregateTests.cs" />
     <Compile Include="EventTests.cs" />
+    <Compile Include="Infrastructure\FollowTheThings.cs" />
     <Compile Include="LeaveEntryTests\WhenAnEmployeeAppliesForLeave.cs" />
     <Compile Include="LeaveEntryTests\WhenCreatingLeaveEntryWithInvalidDates.cs" />
     <Compile Include="SpesificationBase.cs" />
@@ -74,6 +75,10 @@
     <ProjectReference Include="..\Cqrsexy.Events\Cqrsexy.Events.fsproj">
       <Project>{b341082b-e7ac-4cda-a9c1-1a7551e0626a}</Project>
       <Name>Cqrsexy.Events</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrsexy.Persistence\Cqrsexy.Persistence.csproj">
+      <Project>{6e6228f7-f4e2-4f70-8859-e9d898c15131}</Project>
+      <Name>Cqrsexy.Persistence</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

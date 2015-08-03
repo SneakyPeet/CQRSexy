@@ -19,7 +19,7 @@ namespace Cqrsexy.Persistence
             this.eventStore = eventStore;
         }
 
-        public T GetById<T>(Guid id) where T : Aggregate
+        public T GetById<T>(Guid id) where T : Aggregate, new()
         {
             var aggregate = this.unitOfWork.GetById<T>(id);
             if (aggregate == null)

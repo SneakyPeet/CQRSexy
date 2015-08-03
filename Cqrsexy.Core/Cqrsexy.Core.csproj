@@ -49,10 +49,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\Aggregate.cs" />
+    <Compile Include="Infrastructure\CqrsexyApi.cs" />
     <Compile Include="Infrastructure\Handles.cs" />
+    <Compile Include="Infrastructure\ICommandBus.cs" />
     <Compile Include="Infrastructure\IEventStoreUnitOfWork.cs" />
     <Compile Include="Infrastructure\IIdentityFactory.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\IUnitOfWorkFactory.cs" />
     <Compile Include="LeaveApplication\Employee.cs" />
     <Compile Include="Infrastructure\IRepository.cs" />
     <Compile Include="LeaveApplication\ILeaveTypeFactory.cs" />
