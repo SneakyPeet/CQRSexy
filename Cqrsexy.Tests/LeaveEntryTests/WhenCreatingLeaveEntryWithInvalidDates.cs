@@ -9,7 +9,7 @@ namespace Cqrsexy.Tests.LeaveEntryTests
         protected override void When()
         {
             var startDate = DateTime.UtcNow;
-            LeaveEntry.CreateNew(Guid.NewGuid(), new Employee(), startDate, startDate.AddDays(-1), "Annual");
+            LeaveEntry.CreateNew(Guid.NewGuid(), startDate, startDate.AddDays(-1), "Annual");
         }
 
         [Then]

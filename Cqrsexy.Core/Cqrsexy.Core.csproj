@@ -54,7 +54,6 @@
     <Compile Include="Infrastructure\IRepository.cs" />
     <Compile Include="LeaveApplication\ILeaveTypeFactory.cs" />
     <Compile Include="LeaveApplication\LeaveApi.cs" />
-    <Compile Include="LeaveApplication\LeaveEntryCreated.cs" />
     <Compile Include="LeaveApplication\LeaveEntry.cs" />
     <Compile Include="LeaveApplication\LeaveType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -2,14 +2,9 @@ using System;
 
 namespace Cqrsexy.Core.Infrastructure
 {
-    public interface IIdentityFactory
+    public class IdentityFactory
     {
-        Guid Make();
-    }
-
-    public class IdentityFactory : IIdentityFactory
-    {
-        public Guid Make()
+        public static Guid Make()
         {
             return Guid.NewGuid();
         }

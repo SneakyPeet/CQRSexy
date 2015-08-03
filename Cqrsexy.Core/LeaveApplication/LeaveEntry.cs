@@ -11,7 +11,7 @@ namespace Cqrsexy.Core.LeaveApplication
         {
             
         }
-        private LeaveEntry(Guid id, Employee employee, DateTime startDate, DateTime endDate, string leaveType):  this()
+        private LeaveEntry(Guid id, Guid employeeId, DateTime startDate, DateTime endDate, string leaveType):  this()
         {
             if(startDate >= endDate)
             {
@@ -21,15 +21,16 @@ namespace Cqrsexy.Core.LeaveApplication
             //this.typeFactory = typeFactory;
             //ApplyChanges(new LeaveEntryCreated(new Guid(), cmd.StartDate, cmd.EndDate, cmd.LeaveType));
         }
-        
+
         //public void OnLeaveEntryCreated(LeaveEntryCreated evt)
         //{
         //    leaveType = typeFactory.Make(evt.LeaveType);
         //}
 
-        public static LeaveEntry CreateNew(Guid id, Employee employee, DateTime startDate, DateTime endDate, string leaveType)
+        public static LeaveEntry CreateNew(Guid employeeId, DateTime startDate, DateTime endDate, string leaveType)
         {
-            return new LeaveEntry(id, employee, startDate, endDate, leaveType);
+            var id = IdentityFactory.Make();
+            return new LeaveEntry(id, employeeId, startDate, endDate, leaveType);
         }
     }
 }
