@@ -1,4 +1,5 @@
 using System;
+using Cqrsexy.Commands;
 using Cqrsexy.Core.Infrastructure;
 
 namespace Cqrsexy.Core.LeaveApplication
@@ -22,7 +23,7 @@ namespace Cqrsexy.Core.LeaveApplication
         {
             var employee = employeeRepo.GetById(cmd.EmployeeId);
             var id = idFactory.Make();
-            var leaveEntry = new LeaveEntry(id, employee, cmd, typeFactory);
+            var leaveEntry = LeaveEntry.CreateNew(id, employee, cmd.StartDate, cmd.EndDate, cmd.LeaveType);
             repo.Save(leaveEntry);
             return leaveEntry.Id;
         }

@@ -5,6 +5,7 @@ using NUnit.Framework;
 
 namespace Cqrsexy.Tests
 {
+    //Test F# structural equality
     [TestFixture]
     public class EventTests
     {

@@ -34,6 +34,14 @@
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SharpTestsEx, Version=1.1.1.0, Culture=neutral, PublicKeyToken=8c60d8070630b1c1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpTestsEx.1.1.1\lib\SharpTestsEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpTestsEx.Mvc, Version=1.1.1.0, Culture=neutral, PublicKeyToken=8c60d8070630b1c1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpTestsEx.1.1.1\lib\SharpTestsEx.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,13 +54,19 @@
   <ItemGroup>
     <Compile Include="AggregateTests.cs" />
     <Compile Include="EventTests.cs" />
+    <Compile Include="LeaveEntryTests\WhenCreatingLeaveEntryWithInvalidDates.cs" />
     <Compile Include="SpesificationBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Cqrsexy.Commands\Cqrsexy.Commands.fsproj">
+      <Project>{372d417d-c888-4c3e-bd1c-4d00ef0fbaca}</Project>
+      <Name>Cqrsexy.Commands</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Cqrsexy.Core\Cqrsexy.Core.csproj">
       <Project>{7fe388f9-085f-41dd-ba8d-244bd39b968e}</Project>
       <Name>Cqrsexy.Core</Name>
@@ -62,6 +76,7 @@
       <Name>Cqrsexy.Events</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cqrsexy.Tests", "Cqrsexy.Te
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Cqrsexy.Events", "Cqrsexy.Events\Cqrsexy.Events.fsproj", "{B341082B-E7AC-4CDA-A9C1-1A7551E0626A}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Cqrsexy.Commands", "Cqrsexy.Commands\Cqrsexy.Commands.fsproj", "{372D417D-C888-4C3E-BD1C-4D00EF0FBACA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B341082B-E7AC-4CDA-A9C1-1A7551E0626A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B341082B-E7AC-4CDA-A9C1-1A7551E0626A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B341082B-E7AC-4CDA-A9C1-1A7551E0626A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{372D417D-C888-4C3E-BD1C-4D00EF0FBACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{372D417D-C888-4C3E-BD1C-4D00EF0FBACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{372D417D-C888-4C3E-BD1C-4D00EF0FBACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{372D417D-C888-4C3E-BD1C-4D00EF0FBACA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

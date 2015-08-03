@@ -7,7 +7,7 @@ namespace Cqrsexy.Core.Infrastructure
         Guid Make();
     }
 
-    class IdentityFactory : IIdentityFactory
+    public class IdentityFactory : IIdentityFactory
     {
         public Guid Make()
         {

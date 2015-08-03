@@ -9,9 +9,8 @@ namespace Cqrsexy.Core.Infrastructure
     {
         private readonly List<IEvent> changes;
 
-        protected Aggregate(Guid id)
+        protected Aggregate()
         {
-            this.Id = id;
             this.changes = new List<IEvent>();
             this.Version = 0;
         }
@@ -59,7 +58,7 @@ namespace Cqrsexy.Core.Infrastructure
             }
         }
 
-        public IEnumerable<IEvent> GetUncommitedEvents()
+        public IEnumerable<IEvent> GetUncommitedChanges()
         {
             return this.changes.AsReadOnly();
         }
@@ -69,7 +68,7 @@ namespace Cqrsexy.Core.Infrastructure
             this.changes.Clear();
         }
 
-        public void LoadFromHistory(List<IEvent> history)
+        public void LoadFromHistory(IEnumerable<IEvent> history)
         {
             //catch load from history exception
             foreach(var evt in history)

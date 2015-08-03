@@ -1,47 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Cqrsexy.Core.Infrastructure;
 using Cqrsexy.Events;
 using NUnit.Framework;
 
-using Cqrsexy.Events;
-
 namespace Cqrsexy.Tests
 {
     [TestFixture]
-    public abstract class SpesificationBase
+    public abstract class AggregateSpesificationBase<T> where T : Aggregate, new()
     {
-        [SetUp]
-        public void SetUp()
+        protected T aggregate;
+        protected Exception expectedException;
+        protected IEnumerable<IEvent> changes;
+        protected virtual IEnumerable<IEvent> Given
         {
-            Given();
-            When();
+            get
+            {
+                return new List<IEvent>();
+            }
         }
 
-        protected virtual void Given() { }
-        protected virtual void When() { }
+        protected abstract void When();
+
+        [ExecuteTest]
+        public void ExecuteTest()
+        {
+            aggregate = new T();
+            aggregate.LoadFromHistory(Given);
+            try
+            {
+                When();
+                changes = aggregate.GetUncommitedChanges();
+            }
+            catch(Exception e)
+            {
+                expectedException = e;
+            }
+        }
+
     }
 
-    public class TestRepo<T> : IRepository<T> where T : Aggregate {
-        public TestRepo()
-        {
-            this.changes = new List<IEvent>();
-        }
-        public T GetById(Guid guid)
-        {
-            throw new NotImplementedException();
-        }
+    public class Then : TestAttribute {}
 
-        public void Save(T aggregate)
-        {
-            changes = aggregate.GetUncommitedEvents().ToList();
-        }
-
-        private List<IEvent> changes;
-
-        
-    }
-
+    public class ExecuteTest : SetUpAttribute { }
 
 }

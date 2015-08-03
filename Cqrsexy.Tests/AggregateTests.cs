@@ -28,7 +28,7 @@ namespace Cqrsexy.Tests
         public void ApplyingAnEventShouldAddItToUncommitedEvents()
         {
             aggregate.ApplyTestEvent();
-            var evt =  aggregate.GetUncommitedEvents().Single();
+            var evt =  aggregate.GetUncommitedChanges().Single();
             Assert.IsInstanceOf(typeof(TestEventApplied), evt);
         }
 
@@ -38,7 +38,7 @@ namespace Cqrsexy.Tests
             aggregate.ApplyTestEvent();
             aggregate.ApplyTestEvent();
             aggregate.Commit();
-            Assert.IsEmpty(aggregate.GetUncommitedEvents());
+            Assert.IsEmpty(aggregate.GetUncommitedChanges());
         }
 
         [Test]
@@ -118,7 +118,7 @@ namespace Cqrsexy.Tests
                 Foo = Foo + evt.Prop;
             }
 
-            public TestAggregate() : base(new Guid()) {}
+            public TestAggregate() {}
         }
 
         class TestEventApplied : IEvent
