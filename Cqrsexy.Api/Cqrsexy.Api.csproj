@@ -40,9 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SingleUnitOfWorkApplication.cs" />
+    <Compile Include="ApplicationHandlingUnitOfWork.cs" />
+    <Compile Include="CommandBus.cs" />
     <Compile Include="IApplication.cs" />
     <Compile Include="ICommandBus.cs" />
+    <Compile Include="ICommandHandlerContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -32,7 +32,12 @@ namespace Cqrsexy.Persistence
             }
             return null;
         }
-        
+
+        public bool Contains(Guid id)
+        {
+            return trackedAggregates.ContainsKey(id);
+        }
+
         public void Commit()
         {
             eventStore.Save(trackedAggregates.Values);

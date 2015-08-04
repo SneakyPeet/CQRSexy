@@ -4,12 +4,12 @@ using Cqrsexy.DomainMessages;
 
 namespace Cqrsexy.Api
 {
-    class SingleUnitOfWorkApplication : IApplication
+    class ApplicationHandlingUnitOfWork : IApplication
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly ICommandBus bus;
 
-        public SingleUnitOfWorkApplication(IUnitOfWork unitOfWork, ICommandBus bus)
+        public ApplicationHandlingUnitOfWork(IUnitOfWork unitOfWork, ICommandBus bus)
         {
             this.unitOfWork = unitOfWork;
             this.bus = bus;
@@ -17,15 +17,14 @@ namespace Cqrsexy.Api
 
         public void Execute(ICommand command)
         {
-            try //this can still be better but I am not yet sure how
+            try //Can force unit of work to implement IDisposable and use using {} but it compiles down to what I have below anyway
             {
                 this.bus.Submit(command);
                 unitOfWork.Commit();
             }
-            catch (Exception)
+            finally
             {
                 unitOfWork.Rollback();
-                throw;
             }
         }
     }

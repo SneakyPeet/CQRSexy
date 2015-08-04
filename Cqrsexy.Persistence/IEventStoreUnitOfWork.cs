@@ -7,5 +7,6 @@ namespace Cqrsexy.Persistence
     {
         void RegisterForTracking(Aggregate aggregate);
         T GetById<T>(Guid id) where T : Aggregate;
+        bool Contains(Guid id);
     }
 }

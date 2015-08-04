@@ -21,11 +21,12 @@ namespace Cqrsexy.Persistence
 
         public T GetById<T>(Guid id) where T : Aggregate, new()
         {
-            var aggregate = this.unitOfWork.GetById<T>(id);
-            if (aggregate == null)
+            if (unitOfWork.Contains(id))
             {
-                aggregate = eventStore.Load<T>(id);
+                return this.unitOfWork.GetById<T>(id);
             }
+
+            var aggregate = eventStore.Load<T>(id);
             this.unitOfWork.RegisterForTracking(aggregate);
             return aggregate;
         }
