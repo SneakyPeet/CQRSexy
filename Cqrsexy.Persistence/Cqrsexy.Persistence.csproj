@@ -45,6 +45,7 @@
     <Compile Include="EventStoreUnitOfWork.cs" />
     <Compile Include="IEventStoreLoader.cs" />
     <Compile Include="IEventStorePresister.cs" />
+    <Compile Include="IEventStoreUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

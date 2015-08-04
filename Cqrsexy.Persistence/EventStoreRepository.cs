@@ -1,5 +1,5 @@
 ﻿using System;
-using Cqrsexy.Core.Infrastructure;
+using Cqrsexy.Core;
 
 namespace Cqrsexy.Persistence
 {
@@ -32,7 +32,7 @@ namespace Cqrsexy.Persistence
 
         public void Add(Aggregate aggregate)
         {
-            this.unitOfWork.Add(aggregate);
+            this.unitOfWork.RegisterForTracking(aggregate);
         }
     }
 }

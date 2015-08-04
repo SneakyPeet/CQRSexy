@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{48F523D1-17F2-439F-9735-C1149037B325}</ProjectGuid>
+    <ProjectGuid>{8B245CAA-F9CB-47F0-B206-7E8E3ECCAEB4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cqrsexy.Tests</RootNamespace>
-    <AssemblyName>Cqrsexy.Tests</AssemblyName>
+    <RootNamespace>Cqrsexy.Domain</RootNamespace>
+    <AssemblyName>Cqrsexy.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,18 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SharpTestsEx, Version=1.1.1.0, Culture=neutral, PublicKeyToken=8c60d8070630b1c1, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpTestsEx.1.1.1\lib\SharpTestsEx.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SharpTestsEx.Mvc, Version=1.1.1.0, Culture=neutral, PublicKeyToken=8c60d8070630b1c1, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpTestsEx.1.1.1\lib\SharpTestsEx.Mvc.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,28 +40,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AggregateTests.cs" />
-    <Compile Include="EventTests.cs" />
-    <Compile Include="Infrastructure\FollowTheThings.cs" />
-    <Compile Include="LeaveEntryTests\WhenAnEmployeeAppliesForLeave.cs" />
-    <Compile Include="LeaveEntryTests\WhenCreatingLeaveEntryWithInvalidDates.cs" />
-    <Compile Include="SpesificationBase.cs" />
+    <Compile Include="LeaveApplication\Employee.cs" />
+    <Compile Include="LeaveApplication\ApplyForLeaveCommandHandler.cs" />
+    <Compile Include="LeaveApplication\Leave.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Cqrsexy.Core\Cqrsexy.Core.csproj">
       <Project>{7fe388f9-085f-41dd-ba8d-244bd39b968e}</Project>
       <Name>Cqrsexy.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Cqrsexy.Persistence\Cqrsexy.Persistence.csproj">
-      <Project>{6e6228f7-f4e2-4f70-8859-e9d898c15131}</Project>
-      <Name>Cqrsexy.Persistence</Name>
+    <ProjectReference Include="..\Cqrsexy.DomainMessages\Cqrsexy.DomainMessages.fsproj">
+      <Project>{6106809d-bc2b-4936-a57c-655a3a42fcaf}</Project>
+      <Name>Cqrsexy.DomainMessages</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

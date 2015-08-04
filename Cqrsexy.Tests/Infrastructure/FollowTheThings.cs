@@ -31,7 +31,7 @@ namespace Cqrsexy.Tests.Infrastructure
             }
             public void Submit<T>(T command) where T : ICommand
             {
-                //resolve some how
+                //resolve some how directly from container?
                 var foo = command as CreateLeaveEntry;
                 api.Handle(foo);
             }

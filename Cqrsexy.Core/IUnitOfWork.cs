@@ -1,4 +1,4 @@
-namespace Cqrsexy.Core.Infrastructure
+﻿namespace Cqrsexy.Core
 {
     public interface IUnitOfWork
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Cqrsexy.Core.Infrastructure
+namespace Cqrsexy.Core
 {
     public interface IRepository
     {

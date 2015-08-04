@@ -1,9 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Cqrsexy.Events;
+using Cqrsexy.DomainMessages;
 
-namespace Cqrsexy.Core.Infrastructure
+//todo clean up
+namespace Cqrsexy.Core
 {
     public abstract class Aggregate
     {
@@ -52,7 +53,7 @@ namespace Cqrsexy.Core.Infrastructure
         {
             this.Version++;
             var apply = this.GetType().GetMethod("On" + evt.GetType().Name, BindingFlags.NonPublic | BindingFlags.Instance);
-            if(apply != null)
+            if (apply != null)
             {
                 apply.Invoke(this, new object[] { evt });
             }
@@ -71,7 +72,7 @@ namespace Cqrsexy.Core.Infrastructure
         public void LoadFromHistory(IEnumerable<IEvent> history)
         {
             //catch load from history exception
-            foreach(var evt in history)
+            foreach (var evt in history)
             {
                 this.Apply(evt);
             }

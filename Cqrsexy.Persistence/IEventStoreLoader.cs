@@ -1,5 +1,5 @@
 ﻿using System;
-using Cqrsexy.Core.Infrastructure;
+using Cqrsexy.Core;
 
 namespace Cqrsexy.Persistence
 {

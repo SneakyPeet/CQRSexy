@@ -1,4 +1,4 @@
-﻿namespace Cqrsexy.Commands.AssemblyInfo
+﻿namespace Cqrsexy.DomainMessages.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices
@@ -7,11 +7,11 @@ open System.Runtime.InteropServices
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[<assembly: AssemblyTitle("Cqrsexy.Commands")>]
+[<assembly: AssemblyTitle("Cqrsexy.DomainMessages")>]
 [<assembly: AssemblyDescription("")>]
 [<assembly: AssemblyConfiguration("")>]
 [<assembly: AssemblyCompany("")>]
-[<assembly: AssemblyProduct("Cqrsexy.Commands")>]
+[<assembly: AssemblyProduct("Cqrsexy.DomainMessages")>]
 [<assembly: AssemblyCopyright("Copyright ©  2015")>]
 [<assembly: AssemblyTrademark("")>]
 [<assembly: AssemblyCulture("")>]
@@ -22,7 +22,7 @@ open System.Runtime.InteropServices
 [<assembly: ComVisible(false)>]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[<assembly: Guid("372d417d-c888-4c3e-bd1c-4d00ef0fbaca")>]
+[<assembly: Guid("6106809d-bc2b-4936-a57c-655a3a42fcaf")>]
 
 // Version information for an assembly consists of the following four values:
 // 

@@ -30,52 +30,29 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SharpTestsEx, Version=1.1.1.0, Culture=neutral, PublicKeyToken=8c60d8070630b1c1, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpTestsEx.1.1.1\lib\SharpTestsEx.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SharpTestsEx.Mvc, Version=1.1.1.0, Culture=neutral, PublicKeyToken=8c60d8070630b1c1, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpTestsEx.1.1.1\lib\SharpTestsEx.Mvc.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\Aggregate.cs" />
-    <Compile Include="Infrastructure\CqrsexyApi.cs" />
-    <Compile Include="Infrastructure\Handles.cs" />
-    <Compile Include="Infrastructure\ICommandBus.cs" />
-    <Compile Include="Infrastructure\IEventStoreUnitOfWork.cs" />
-    <Compile Include="Infrastructure\IIdentityFactory.cs" />
-    <Compile Include="Infrastructure\IUnitOfWork.cs" />
-    <Compile Include="Infrastructure\IUnitOfWorkFactory.cs" />
-    <Compile Include="LeaveApplication\Employee.cs" />
-    <Compile Include="Infrastructure\IRepository.cs" />
-    <Compile Include="LeaveApplication\ILeaveTypeFactory.cs" />
-    <Compile Include="LeaveApplication\LeaveApi.cs" />
-    <Compile Include="LeaveApplication\LeaveEntry.cs" />
-    <Compile Include="LeaveApplication\LeaveType.cs" />
+    <Compile Include="Aggregate.cs" />
+    <Compile Include="ICommandHandler.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cqrsexy.Commands\Cqrsexy.Commands.fsproj">
-      <Project>{372d417d-c888-4c3e-bd1c-4d00ef0fbaca}</Project>
-      <Name>Cqrsexy.Commands</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Cqrsexy.Events\Cqrsexy.Events.fsproj">
-      <Project>{b341082b-e7ac-4cda-a9c1-1a7551e0626a}</Project>
-      <Name>Cqrsexy.Events</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\Cqrsexy.DomainMessages\Cqrsexy.DomainMessages.fsproj">
+      <Project>{6106809d-bc2b-4936-a57c-655a3a42fcaf}</Project>
+      <Name>Cqrsexy.DomainMessages</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

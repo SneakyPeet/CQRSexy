@@ -5,14 +5,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>b341082b-e7ac-4cda-a9c1-1a7551e0626a</ProjectGuid>
+    <ProjectGuid>6106809d-bc2b-4936-a57c-655a3a42fcaf</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Cqrsexy.Events</RootNamespace>
-    <AssemblyName>Cqrsexy.Events</AssemblyName>
+    <RootNamespace>Cqrsexy.DomainMessages</RootNamespace>
+    <AssemblyName>Cqrsexy.DomainMessages</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <TargetFSharpCoreVersion>4.4.0.0</TargetFSharpCoreVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Name>Cqrsexy.Events</Name>
+    <Name>Cqrsexy.DomainMessages</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,7 +22,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
-    <DocumentationFile>bin\Debug\Cqrsexy.Events.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\Cqrsexy.DomainMessages.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,21 +31,17 @@
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
-    <DocumentationFile>bin\Release\Cqrsexy.Events.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\Cqrsexy.DomainMessages.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
-    <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="Messages.fs" />
+    <Compile Include="LeaveApplication.fs" />
     <None Include="Script.fsx" />
-    <Compile Include="Events.fs" />
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>

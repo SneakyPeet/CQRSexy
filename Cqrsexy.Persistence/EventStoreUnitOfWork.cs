@@ -1,48 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Cqrsexy.Core.Infrastructure;
+using Cqrsexy.Core;
 
 namespace Cqrsexy.Persistence
 {
     public class EventStoreUnitOfWork : IEventStoreUnitOfWork
     {
-        private readonly List<Aggregate> trackedAggregates;
+        private readonly Dictionary<Guid, Aggregate> trackedAggregates;
         private readonly IEventStorePresister eventStore;
         public EventStoreUnitOfWork(IEventStorePresister eventStore)
         {
             this.eventStore = eventStore;
-            this.trackedAggregates = new List<Aggregate>();
-        }
-
-        public void Add(Aggregate aggregate)
-        {
-            this.RegisterForTracking(aggregate);
+            this.trackedAggregates = new Dictionary<Guid, Aggregate>();
         }
 
         public void RegisterForTracking(Aggregate aggregate)
         {
-            if (this.trackedAggregates.Any(x => x.Id != aggregate.Id))
+            if (trackedAggregates.ContainsKey(aggregate.Id))
             {
                 throw new AggregateAlreadyAddedToUnitOfWork();
             }
-            this.trackedAggregates.Add(aggregate);
+            this.trackedAggregates.Add(aggregate.Id, aggregate);
         }
 
         public T GetById<T>(Guid id) where T : Aggregate
         {
-            var aggregate = this.trackedAggregates.FirstOrDefault(x => x.Id == id && x.GetType() == typeof(T));
-            if(aggregate != null)
+            if(trackedAggregates.ContainsKey(id))
             {
-                return (T)aggregate;
+                return (T)trackedAggregates[id];
             }
             return null;
         }
         
         public void Commit()
         {
-            eventStore.Save(trackedAggregates);
-            trackedAggregates.ForEach(a => a.Commit());
+            eventStore.Save(trackedAggregates.Values);
+            foreach(var aggregate in trackedAggregates)
+            {
+                aggregate.Value.Commit();
+            }
         }
 
         public void Rollback()
