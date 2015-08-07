@@ -64,8 +64,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AggregateTests.cs" />
     <Compile Include="EventDeserializationTests.cs" />
     <Compile Include="CommandHandlerFactoryTests.cs" />
+    <Compile Include="EventComparisonTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

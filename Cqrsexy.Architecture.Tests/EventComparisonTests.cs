@@ -1,13 +1,12 @@
 ﻿using System;
-using Cqrsexy.Events;
+using Cqrsexy.Domain.LeaveApplication;
 using NUnit.Framework;
 
-
-namespace Cqrsexy.Tests
+namespace Cqrsexy.Architecture.Tests
 {
     //Test F# structural equality
     [TestFixture]
-    public class EventTests
+    public class EventComparisonTests
     {
         [Test]
         public void Given()
