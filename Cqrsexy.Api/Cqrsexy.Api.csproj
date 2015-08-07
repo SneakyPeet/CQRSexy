@@ -41,9 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationHandlingUnitOfWork.cs" />
-    <Compile Include="CommandBus.cs" />
+    <Compile Include="CommandDispatcher.cs" />
     <Compile Include="IApplication.cs" />
-    <Compile Include="ICommandBus.cs" />
+    <Compile Include="ICommandDispatcher.cs" />
     <Compile Include="ICommandHandlerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

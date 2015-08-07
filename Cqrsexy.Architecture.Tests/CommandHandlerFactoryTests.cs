@@ -22,7 +22,7 @@ namespace Cqrsexy.Architecture.Tests
         {
             var container = new WindsorContainer();
             container.Register(Classes.FromThisAssembly()
-                .BasedOn(typeof(Handles<>))
+                .BasedOn(typeof(ICommandHandler<>))
                 .WithServiceAllInterfaces());
 
             container.AddFacility<TypedFactoryFacility>();
@@ -44,7 +44,7 @@ namespace Cqrsexy.Architecture.Tests
         
     }
 
-    public class TestCommandHandler : Handles<TestCommand>
+    public class TestCommandHandler : ICommandHandler<TestCommand>
     {
         public void Handle(TestCommand cmd)
         {

@@ -2,7 +2,7 @@ using Cqrsexy.Core;
 
 namespace Cqrsexy.Domain.LeaveApplication
 {
-    public class ApplyForLeaveCommandHandler : Handles<ApplyForLeave>
+    public class ApplyForLeaveCommandHandler : ICommandHandler<ApplyForLeave>
     {
         private readonly IRepository repo;
 

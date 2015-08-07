@@ -3,16 +3,16 @@ using Cqrsexy.DomainMessages;
 
 namespace Cqrsexy.Api
 {
-    class CommandBus : ICommandBus
+    class CommandDispatcher : ICommandDispatcher
     {
         private readonly ICommandHandlerFactory factory;
 
-        public CommandBus(ICommandHandlerFactory factory)
+        public CommandDispatcher(ICommandHandlerFactory factory)
         {
             this.factory = factory;
         }
 
-        public void Submit<T>(T command) where T : ICommand
+        public void Send<T>(T command) where T : ICommand
         {
             var handler = this.factory.Create(command);
             handler.Handle(command);
