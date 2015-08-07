@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{597CE8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2727CB36-080D-416C-B59A-45543A809D4C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cqrsexy.Architecture.Tests", "Cqrsexy.Architecture.Tests\Cqrsexy.Architecture.Tests.csproj", "{D39A9E7E-ABDC-4983-B892-F9E1D2A598BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{6106809D-BC2B-4936-A57C-655A3A42FCAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6106809D-BC2B-4936-A57C-655A3A42FCAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6106809D-BC2B-4936-A57C-655A3A42FCAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D39A9E7E-ABDC-4983-B892-F9E1D2A598BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D39A9E7E-ABDC-4983-B892-F9E1D2A598BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D39A9E7E-ABDC-4983-B892-F9E1D2A598BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D39A9E7E-ABDC-4983-B892-F9E1D2A598BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,5 +68,6 @@ Global
 		{8B245CAA-F9CB-47F0-B206-7E8E3ECCAEB4} = {597CE891-0B6C-4AE3-854B-7324279B7CDA}
 		{C1914149-40F4-46FE-A3ED-0F9FA92FA7C1} = {597CE891-0B6C-4AE3-854B-7324279B7CDA}
 		{6106809D-BC2B-4936-A57C-655A3A42FCAF} = {597CE891-0B6C-4AE3-854B-7324279B7CDA}
+		{D39A9E7E-ABDC-4983-B892-F9E1D2A598BA} = {2727CB36-080D-416C-B59A-45543A809D4C}
 	EndGlobalSection
 EndGlobal

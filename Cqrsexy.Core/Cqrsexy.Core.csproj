@@ -46,9 +46,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Cqrsexy.DomainMessages\Cqrsexy.DomainMessages.fsproj">
       <Project>{6106809d-bc2b-4936-a57c-655a3a42fcaf}</Project>
       <Name>Cqrsexy.DomainMessages</Name>

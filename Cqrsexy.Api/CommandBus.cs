@@ -5,17 +5,18 @@ namespace Cqrsexy.Api
 {
     class CommandBus : ICommandBus
     {
-        private readonly ICommandHandlerContainer container;
+        private readonly ICommandHandlerFactory factory;
 
-        public CommandBus(ICommandHandlerContainer container)
+        public CommandBus(ICommandHandlerFactory factory)
         {
-            this.container = container;
+            this.factory = factory;
         }
 
         public void Submit<T>(T command) where T : ICommand
         {
-            Handles<T> handler = container.Resolve<T>();
+            var handler = this.factory.Create(command);
             handler.Handle(command);
+            this.factory.Destroy(handler);
         }
     }
 }
