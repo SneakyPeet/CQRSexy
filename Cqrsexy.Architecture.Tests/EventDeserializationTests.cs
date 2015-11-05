@@ -16,16 +16,16 @@ namespace Cqrsexy.Architecture.Tests
         [Test]
         public void DeserialiseEventKnownFSharpTypeIsKnow()
         {
-            var evt = new LeaveEntryCreated(Guid.NewGuid(), DateTime.Now, DateTime.UtcNow, "Foo");
+            var evt = new AppliedForLeave(Guid.NewGuid(), DateTime.Now, DateTime.UtcNow);
             var json = JsonConvert.SerializeObject(evt);
-            var des = JsonConvert.DeserializeObject<LeaveEntryCreated>(json);
+            var des = JsonConvert.DeserializeObject<AppliedForLeave>(json);
             Assert.AreEqual(evt, des);
         }
 
         [Test]
         public void DeserialiseEventKnownFSharpTypeIsKnowInvered()
         {
-            var evt = new LeaveEntryCreated(Guid.NewGuid(), DateTime.Now, DateTime.UtcNow, "Foo");
+            var evt = new AppliedForLeave(Guid.NewGuid(), DateTime.Now, DateTime.UtcNow);
             var json = JsonConvert.SerializeObject(evt);
             var eventHeader = new Dictionary<string, string>
                            {

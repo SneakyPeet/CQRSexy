@@ -14,10 +14,9 @@ namespace Cqrsexy.Architecture.Tests
             var id = Guid.NewGuid();
             var employeeId = Guid.NewGuid();
             var startDate = DateTime.UtcNow;
-            var event1 = new LeaveEntryCreated(employeeId, startDate, startDate.AddDays(1),  "foo");
-            var event2 = new LeaveEntryCreated(employeeId, startDate, startDate.AddDays(1), "foo");
+            var event1 = new AppliedForLeave(employeeId, startDate, startDate.AddDays(1));
+            var event2 = new AppliedForLeave(employeeId, startDate, startDate.AddDays(1));
             Assert.AreEqual(event1, event2);
         }
-        
     }
 }

@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{48F523D1-17F2-439F-9735-C1149037B325}</ProjectGuid>
+    <ProjectGuid>{E2299834-8E4B-4D01-AF0A-C02AF3B01E8B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cqrsexy.Tests</RootNamespace>
-    <AssemblyName>Cqrsexy.Tests</AssemblyName>
+    <RootNamespace>Cqrsexy.Domain.Tests</RootNamespace>
+    <AssemblyName>Cqrsexy.Domain.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -29,18 +32,18 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+    <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
-    <Reference Include="SharpTestsEx, Version=1.1.1.0, Culture=neutral, PublicKeyToken=8c60d8070630b1c1, processorArchitecture=MSIL">
+    <Reference Include="SharpTestsEx">
       <HintPath>..\packages\SharpTestsEx.1.1.1\lib\SharpTestsEx.dll</HintPath>
-      <Private>True</Private>
     </Reference>
-    <Reference Include="SharpTestsEx.Mvc, Version=1.1.1.0, Culture=neutral, PublicKeyToken=8c60d8070630b1c1, processorArchitecture=MSIL">
+    <Reference Include="SharpTestsEx.Mvc">
       <HintPath>..\packages\SharpTestsEx.1.1.1\lib\SharpTestsEx.Mvc.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -52,27 +55,45 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AggregateTests.cs" />
-    <Compile Include="Infrastructure\FollowTheThings.cs" />
-    <Compile Include="LeaveEntryTests\WhenAnEmployeeAppliesForLeave.cs" />
-    <Compile Include="LeaveEntryTests\WhenCreatingLeaveEntryWithInvalidDates.cs" />
-    <Compile Include="SpesificationBase.cs" />
+    <Compile Include="EventSpesification.cs" />
+    <Compile Include="ExceptionSpesification.cs" />
+    <Compile Include="ITestEventStore.cs" />
+    <Compile Include="LeaveApplication\WhenApprovingLeave\ApproveIfValid.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpesificationBase.cs" />
+    <Compile Include="TestEventStore.cs" />
+    <Compile Include="TestException.cs" />
+    <Compile Include="LeaveApplication\WhenApplyingForLeave\ApplyIfValid.cs" />
+    <Compile Include="TestExtensions.cs" />
+    <Compile Include="LeaveApplication\WhenApplyingForLeave\ThrowExceptionIfToDateBeforeFromDate.cs" />
+    <Compile Include="LeaveApplication\WhenApplyingForLeave\ThrowExceptionIfLeaveOverlapsExistingLeave.cs" />
+    <Compile Include="LeaveApplication\WhenApplyingForLeave\ThrowExceptionIfEmployeeDoesNotExist.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\Cqrsexy.Api\Cqrsexy.Api.csproj">
+      <Project>{c1914149-40f4-46fe-a3ed-0f9fa92fa7c1}</Project>
+      <Name>Cqrsexy.Api</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Cqrsexy.Core\Cqrsexy.Core.csproj">
       <Project>{7fe388f9-085f-41dd-ba8d-244bd39b968e}</Project>
       <Name>Cqrsexy.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrsexy.DomainMessages\Cqrsexy.DomainMessages.fsproj">
+      <Project>{6106809d-bc2b-4936-a57c-655a3a42fcaf}</Project>
+      <Name>Cqrsexy.DomainMessages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cqrsexy.Domain\Cqrsexy.Domain.csproj">
+      <Project>{8b245caa-f9cb-47f0-b206-7e8e3eccaeb4}</Project>
+      <Name>Cqrsexy.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Cqrsexy.Persistence\Cqrsexy.Persistence.csproj">
       <Project>{6e6228f7-f4e2-4f70-8859-e9d898c15131}</Project>
       <Name>Cqrsexy.Persistence</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

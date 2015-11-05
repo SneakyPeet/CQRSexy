@@ -6,19 +6,34 @@ open Cqrsexy.DomainMessages
 type ApplyForLeave = {
     LeaveId: Guid;
     EmployeeId: Guid;
-    StartDate: DateTime;
-    EndDate: DateTime;
-    LeaveType: String;
+    From: DateTime;
+    To: DateTime;
 } with interface ICommand
 
 type AppliedForLeave = {
     LeaveEntryId: Guid;
+    From: DateTime;
+    To: DateTime;
 } with interface IEvent
 
-type LeaveEntryCreated = {
+type HireEmployee = {
     EmployeeId: Guid;
-    StartDate: DateTime;
-    EndDate: DateTime;
-    LeaveType: String;
+    Name: String;
+} with interface ICommand
+
+type EmployeeHired = {
+    EmployeeId: Guid;
+    Name: String;
+    Date: DateTime;
+} with interface IEvent
+
+type ApproveLeave = {
+    LeaveId: Guid;
+    ApproverId: Guid;
+} with interface ICommand
+
+type LeaveApproved = {
+    LeaveId: Guid;
+    ApproverId: Guid;
 } with interface IEvent
 

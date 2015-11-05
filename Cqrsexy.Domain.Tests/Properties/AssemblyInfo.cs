@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Cqrsexy.Tests")]
+[assembly: AssemblyTitle("Cqrsexy.Domain.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Cqrsexy.Tests")]
+[assembly: AssemblyProduct("Cqrsexy.Domain.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("48f523d1-17f2-439f-9735-c1149037b325")]
+[assembly: Guid("e2299834-8e4b-4d01-af0a-c02af3b01e8b")]
 
 // Version information for an assembly consists of the following four values:
 //

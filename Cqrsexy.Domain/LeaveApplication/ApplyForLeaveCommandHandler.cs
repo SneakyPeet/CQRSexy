@@ -1,4 +1,5 @@
 using Cqrsexy.Core;
+using Cqrsexy.Domain.Employees;
 
 namespace Cqrsexy.Domain.LeaveApplication
 {
@@ -14,8 +15,7 @@ namespace Cqrsexy.Domain.LeaveApplication
         public void Handle(ApplyForLeave cmd)
         {
             var employee = this.repo.GetById<Employee>(cmd.EmployeeId);
-            var leaveEntry = employee.ApplyForLeave(cmd.LeaveId, cmd.StartDate, cmd.EndDate, cmd.LeaveType);
-            this.repo.Add(leaveEntry);
+            employee.ApplyForLeave(cmd.LeaveId, cmd.From, cmd.To);
         }
     }
 }

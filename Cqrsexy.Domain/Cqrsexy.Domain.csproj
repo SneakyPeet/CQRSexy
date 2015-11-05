@@ -40,9 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LeaveApplication\Employee.cs" />
+    <Compile Include="Employees\Employee.cs" />
     <Compile Include="LeaveApplication\ApplyForLeaveCommandHandler.cs" />
+    <Compile Include="LeaveApplication\ApprovedLeave.cs" />
+    <Compile Include="LeaveApplication\EmployeeDoesNotExistException.cs" />
     <Compile Include="LeaveApplication\Leave.cs" />
+    <Compile Include="LeaveApplication\OverlappingLeaveException.cs" />
+    <Compile Include="LeaveApplication\PendingLeave.cs" />
+    <Compile Include="LeaveApplication\ToDateBeforeFromDateException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
