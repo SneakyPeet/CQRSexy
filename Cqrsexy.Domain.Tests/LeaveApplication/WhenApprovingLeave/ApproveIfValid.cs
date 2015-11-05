@@ -15,18 +15,18 @@ namespace Cqrsexy.Domain.Tests.LeaveApplication.WhenApprovingLeave
 
         public override List<ICommand> Given()
         {
-            return History.With(new HireEmployee(this.employeeId, "Pieter"))
-                .And(new ApplyForLeave(this.leaveId, this.employeeId, this.@from, this.to));
+            return History.With(new HireEmployee(employeeId, "Pieter"))
+                .And(new ApplyForLeave(leaveId, employeeId, from, to));
         }
 
         public override ICommand When()
         {
-            return new ApproveLeave(this.leaveId, this.approverId);
+            return new ApproveLeave(employeeId, leaveId, approverId);
         }
 
         public override List<IEvent> Then()
         {
-            return Expected.Event(new LeaveApproved(this.leaveId, this.approverId));
+            return Expected.Event(new LeaveApproved(leaveId, approverId));
         }
     }
 }

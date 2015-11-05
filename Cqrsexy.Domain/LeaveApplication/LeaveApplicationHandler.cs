@@ -3,11 +3,13 @@ using Cqrsexy.Domain.Employees;
 
 namespace Cqrsexy.Domain.LeaveApplication
 {
-    public class ApplyForLeaveCommandHandler : ICommandHandler<ApplyForLeave>
+    public class LeaveApplicationHandler 
+        : ICommandHandler<ApplyForLeave>,
+        ICommandHandler<ApproveLeave>
     {
         private readonly IRepository repo;
 
-        public ApplyForLeaveCommandHandler(IRepository repo)
+        public LeaveApplicationHandler(IRepository repo)
         {
             this.repo = repo;
         }
@@ -16,6 +18,12 @@ namespace Cqrsexy.Domain.LeaveApplication
         {
             var employee = this.repo.GetById<Employee>(cmd.EmployeeId);
             employee.ApplyForLeave(cmd.LeaveId, cmd.From, cmd.To);
+        }
+
+        public void Handle(ApproveLeave cmd)
+        {
+            var employee = this.repo.GetById<Employee>(cmd.EmployeeId);
+            employee.ApproveLeave(cmd.LeaveId, cmd.ApproverId);
         }
     }
 }

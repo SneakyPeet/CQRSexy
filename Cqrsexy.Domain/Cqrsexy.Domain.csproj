@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Employees\Employee.cs" />
-    <Compile Include="LeaveApplication\ApplyForLeaveCommandHandler.cs" />
+    <Compile Include="LeaveApplication\LeaveApplicationHandler.cs" />
     <Compile Include="LeaveApplication\ApprovedLeave.cs" />
     <Compile Include="LeaveApplication\EmployeeDoesNotExistException.cs" />
     <Compile Include="LeaveApplication\Leave.cs" />

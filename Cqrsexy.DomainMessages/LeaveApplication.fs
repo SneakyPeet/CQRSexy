@@ -28,6 +28,7 @@ type EmployeeHired = {
 } with interface IEvent
 
 type ApproveLeave = {
+    EmployeeId: Guid;
     LeaveId: Guid;
     ApproverId: Guid;
 } with interface ICommand
