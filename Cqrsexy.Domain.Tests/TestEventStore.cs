@@ -1,41 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Cqrsexy.Core;
 using Cqrsexy.DomainMessages;
 
 namespace Cqrsexy.Domain.Tests
 {
-    public class TestEventStore : ITestEventStore
+    public class TestEventStore : Dictionary<Guid, Aggregate>
     {
-        private readonly Dictionary<Guid, Aggregate> aggregatesStore;
-
-        public TestEventStore()
-        {
-            this.aggregatesStore = new Dictionary<Guid, Aggregate>();
-        }
-
-        public T Load<T>(Guid id) where T : Aggregate, new()
-        {
-            if (this.aggregatesStore.ContainsKey(id))
-            {
-                return (T)this.aggregatesStore[id];
-            }
-            throw new TestException(string.Format("Aggregate Id {0} cannot be found in the test event store", id));
-        }
-
-        public void Save(IEnumerable<Aggregate> aggregates)
-        {
-            throw new NotImplementedException();
-        }
-
         public void CommitInitialEvents()
         {
-            throw new NotImplementedException();
+            foreach(var aggregate in this.Values)
+            {
+                aggregate.Commit();
+            }
         }
 
         public List<IEvent> NewEvents()
         {
-            throw new NotImplementedException();
+            return this.Values.SelectMany(x => x.GetUncommitedChanges()).ToList();
+        }
+
+        public void Complete()
+        {
+            this.Clear();
         }
     }
 }

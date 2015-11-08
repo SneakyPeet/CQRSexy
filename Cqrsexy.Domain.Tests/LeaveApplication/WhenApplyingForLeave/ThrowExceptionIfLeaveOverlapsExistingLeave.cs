@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Cqrsexy.Domain.LeaveApplication;
 using Cqrsexy.DomainMessages;
 
-namespace Cqrsexy.Domain.Tests.WhenApplyingForLeave
+namespace Cqrsexy.Domain.Tests.LeaveApplication.WhenApplyingForLeave
 {
     public class ThrowExceptionIfLeaveOverlapsExistingLeave : ExceptionSpesification
     {
@@ -14,8 +14,8 @@ namespace Cqrsexy.Domain.Tests.WhenApplyingForLeave
         public override List<ICommand> Given()
         {
             return History
-                .With(new HireEmployee(employeeId, "Pieter"))
-                .And(new ApplyForLeave(existingLeaveId, employeeId, new DateTime(2012,01,01),new DateTime(2012,01,02)));
+                .With(new HireEmployee(this.employeeId, "Pieter"))
+                .And(new ApplyForLeave(this.existingLeaveId, this.employeeId, new DateTime(2012,01,01),new DateTime(2012,01,02)));
         }
 
         public override ICommand When()

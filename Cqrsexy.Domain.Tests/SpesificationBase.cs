@@ -14,22 +14,35 @@ namespace Cqrsexy.Domain.Tests
         [Test]
         public abstract void Test();
 
-        protected ITestEventStore eventStore;
-        private IApplication application;
+        protected SpesificationBase()
+        {
+            var container = FixtureBase.Container;
+            app = container.Resolve<IApplication>();
+            eventStore = container.Resolve<TestEventStore>();
+        }
+
+        protected readonly IApplication app;
+        protected readonly TestEventStore eventStore;
 
         [SetUp]
         public void SetUp()
         {
             foreach(var command in this.Given())
             {
-                this.application.Execute(command);
+                this.app.Execute(command);
                 this.eventStore.CommitInitialEvents();
             }
         }
 
         protected void Execute()
         {
-            this.application.Execute(this.When());
+            this.app.Execute(this.When());
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            eventStore.Complete();
         }
     }
 }

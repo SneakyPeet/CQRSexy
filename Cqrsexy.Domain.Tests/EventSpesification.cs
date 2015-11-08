@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Cqrsexy.DomainMessages;
+using NUnit.Framework;
 using SharpTestsEx;
 
 namespace Cqrsexy.Domain.Tests
@@ -8,6 +9,7 @@ namespace Cqrsexy.Domain.Tests
     {
         public abstract List<IEvent> Then();
 
+        [Test]
         public override void Test()
         {
             this.Execute();

@@ -9,7 +9,7 @@ namespace Cqrsexy.Domain.Tests.LeaveApplication.WhenApprovingLeave
     {
         private readonly Guid employeeId = new Guid("809b71b5-1fc5-4039-b7fe-5d23aa58c5b4");
         private readonly Guid approverId = new Guid("809de1b5-1fc5-4039-b7fe-5d23aa58c5b4");
-        private readonly Guid leaveId = new Guid("dfewb7b5-1fc5-4039-b7fe-5d23aa58c5b4");
+        private readonly Guid leaveId = new Guid("dfeab7b5-1fc5-4039-b7fe-5d23aa58c5b4");
         private readonly DateTime from = new DateTime(2012, 05, 05);
         private readonly DateTime to = new DateTime(2012, 05, 06);
 

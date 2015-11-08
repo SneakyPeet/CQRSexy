@@ -7,6 +7,7 @@ namespace Cqrsexy.Domain.Tests
     {
         public abstract Exception Then();
 
+        [Test]
         public override void Test()
         {
             var expectedException = this.Then();

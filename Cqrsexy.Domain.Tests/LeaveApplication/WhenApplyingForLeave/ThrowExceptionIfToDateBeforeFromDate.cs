@@ -8,7 +8,7 @@ namespace Cqrsexy.Domain.Tests.LeaveApplication.WhenApplyingForLeave
     public class ThrowExceptionIfToDateBeforeFromDate : ExceptionSpesification
     {
         private readonly Guid employeeId = new Guid("809b71b5-1fc5-4039-b7fe-5d23aa58c5b4");
-        private readonly Guid leaveId = new Guid("dfewb7b5-1fc5-4039-b7fe-5d23aa58c5b4");
+        private readonly Guid leaveId = new Guid("dfeab7b5-1fc5-4039-b7fe-5d23aa58c5b4");
 
 
         public override List<ICommand> Given()
