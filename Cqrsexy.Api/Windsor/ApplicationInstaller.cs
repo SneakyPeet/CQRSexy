@@ -44,9 +44,9 @@ namespace Cqrsexy.Api.Windsor
             );
 
             container.Register(
-                Component.For<IUnitOfWork>()
+                Component.For<IUnitOfWork, IEventStoreUnitOfWork>()
                 .ImplementedBy<EventStoreUnitOfWork>()
-                .LifestyleBoundTo<IApplication>()
+                .LifestyleBoundToNearest<IApplication>()
             );
         }
     }

@@ -4,6 +4,6 @@ namespace Cqrsexy.Api
 {
     public interface IApplication
     {
-        void Execute(ICommand command);
+        void Execute<T>(T command) where T : ICommand;
     }
 }

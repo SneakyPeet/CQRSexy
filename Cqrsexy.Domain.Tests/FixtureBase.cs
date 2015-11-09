@@ -1,6 +1,5 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.Windsor;
-using Cqrsexy.Api;
 using Cqrsexy.Api.Windsor;
 using Cqrsexy.Persistence;
 using NUnit.Framework;

@@ -15,7 +15,7 @@ namespace Cqrsexy.Api
             this.dispatcher = dispatcher;
         }
 
-        public void Execute(ICommand command)
+        public void Execute<T>(T command) where T : ICommand
         {
             try //Can force unit of work to implement IDisposable and use using {} but it compiles down to what I have below anyway
             {
