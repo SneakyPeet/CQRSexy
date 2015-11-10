@@ -2,7 +2,7 @@
 using Cqrsexy.Core;
 using Cqrsexy.Persistence;
 
-namespace Cqrsexy.Domain.Tests
+namespace Cqrsexy.Domain.Tests.MockEventStore
 {
     public class TestEventStoreLoader : IEventStoreLoader
     {
@@ -17,9 +17,18 @@ namespace Cqrsexy.Domain.Tests
         {
             if (this.eventStore.ContainsKey(id))
             {
-                return (T)this.eventStore[id];
+                return BuildAggregateFromHistory<T>(id);
             }
             throw new TestException(string.Format("Aggregate Id {0} cannot be found in the test event store", id));
+        }
+
+        private T BuildAggregateFromHistory<T>(Guid id) where T : Aggregate, new()
+        {
+            var stream = this.eventStore[id];
+            var type = Type.GetType(stream.AggregateName);
+            var aggregate = (T)Activator.CreateInstance(type);
+            aggregate.LoadFromHistory(stream.History());
+            return aggregate;
         }
     }
 }

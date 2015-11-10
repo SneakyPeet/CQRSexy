@@ -15,7 +15,7 @@ namespace Cqrsexy.Domain.Tests.LeaveApplication.WhenApprovingLeave
         [Test]
         public void Test()
         {
-            Given(new HireEmployee(employeeId, "Pieter"));
+            Given(new HireEmployee(employeeId, "Pieter", new DateTime(2012, 01, 02)));
             And(new ApplyForLeave(leaveId, employeeId, from, to));
             When(new ApproveLeave(employeeId, leaveId, approverId));
             Then(Expected.Event(new LeaveApproved(leaveId, approverId)));

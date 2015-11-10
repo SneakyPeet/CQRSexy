@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using Cqrsexy.DomainMessages;
 
@@ -9,11 +10,22 @@ namespace Cqrsexy.Core
     public abstract class Aggregate
     {
         private readonly List<IEvent> changes;
+        private IDictionary<Type, MethodInfo> eventHandlers;
 
         protected Aggregate()
         {
             this.changes = new List<IEvent>();
             this.Version = 0;
+            RegisterEventHandlers();
+        }
+
+        private void RegisterEventHandlers()
+        {
+            eventHandlers = this.GetType()
+                    .GetMethods()
+                    .Where(m => m.Name == "On")
+                    .Where(m => m.GetParameters().Length == 1)
+                    .ToDictionary(m => m.GetParameters().First().ParameterType, m => m);
         }
 
         public Guid Id { get; protected set; }
@@ -52,11 +64,12 @@ namespace Cqrsexy.Core
         private void Apply(IEvent evt)
         {
             this.Version++;
-            var apply = this.GetType().GetMethod("On" + evt.GetType().Name, BindingFlags.NonPublic | BindingFlags.Instance);
-            if (apply != null)
+            var eventType = evt.GetType();
+            if (!eventHandlers.ContainsKey(eventType))
             {
-                apply.Invoke(this, new object[] { evt });
+                throw new OnEventHandlerNotRegisteredException(eventType);
             }
+            eventHandlers[eventType].Invoke(this, new[] { evt });
         }
 
         public IEnumerable<IEvent> GetUncommitedChanges()

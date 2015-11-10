@@ -62,12 +62,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LeaveApplication\WhenApprovingLeave\ApproveIfValid.cs" />
+    <Compile Include="MockEventStore\EventStream.cs" />
+    <Compile Include="MockEventStore\EventStreamEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Spesification.cs" />
     <Compile Include="FixtureBase.cs" />
-    <Compile Include="TestEventStore.cs" />
-    <Compile Include="TestEventStoreLoader.cs" />
-    <Compile Include="TestEventStorePresister.cs" />
+    <Compile Include="MockEventStore\TestEventStore.cs" />
+    <Compile Include="MockEventStore\TestEventStoreLoader.cs" />
+    <Compile Include="MockEventStore\TestEventStorePresister.cs" />
     <Compile Include="TestException.cs" />
     <Compile Include="LeaveApplication\WhenApplyingForLeave\ApplyIfValid.cs" />
     <Compile Include="TestExtensions.cs" />

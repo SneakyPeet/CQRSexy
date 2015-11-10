@@ -1,6 +1,8 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Cqrsexy.Api.Windsor;
+using Cqrsexy.Core;
+using Cqrsexy.Domain.Tests.MockEventStore;
 using Cqrsexy.Persistence;
 using NUnit.Framework;
 
@@ -35,6 +37,12 @@ namespace Cqrsexy.Domain.Tests
             Container.Register(
                 Component.For<TestEventStore>()
                 );
+
+            Container.Register(
+                Component.For<IUnitOfWork, IEventStoreUnitOfWork>()
+                .ImplementedBy<EventStoreUnitOfWork>()
+                .LifestyleSingleton()
+            );
         }
 
         [TearDown]

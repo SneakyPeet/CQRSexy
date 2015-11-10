@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Cqrsexy.Api;
+using Cqrsexy.Domain.Tests.MockEventStore;
 using Cqrsexy.DomainMessages;
 using NUnit.Framework;
 using SharpTestsEx;

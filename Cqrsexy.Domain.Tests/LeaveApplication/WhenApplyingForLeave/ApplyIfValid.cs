@@ -14,7 +14,7 @@ namespace Cqrsexy.Domain.Tests.LeaveApplication.WhenApplyingForLeave
         [Test]
         public void Test()
         {
-            Given(new HireEmployee(this.employeeId, "Pieter"));
+            Given(new HireEmployee(this.employeeId, "Pieter", new DateTime(2012, 01, 02)));
             When(new ApplyForLeave(this.leaveId, this.employeeId, this.@from, this.to));
             Then(Expected.Event(new AppliedForLeave(this.leaveId, this.@from, this.to)));
         }

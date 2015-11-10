@@ -14,7 +14,7 @@ namespace Cqrsexy.Domain.Tests.LeaveApplication.WhenApplyingForLeave
         [ExpectedException(typeof(OverlappingLeaveException))]
         public void Test()
         {
-            Given(new HireEmployee(this.employeeId, "Pieter"));
+            Given(new HireEmployee(this.employeeId, "Pieter", new DateTime(2012, 01, 02)));
             And(new ApplyForLeave(this.existingLeaveId, this.employeeId, new DateTime(2012, 01, 01), new DateTime(2012, 01, 02)));
             When(new ApplyForLeave(this.leaveId, this.employeeId, new DateTime(2012, 01, 02), new DateTime(2012, 05, 06)));
         }

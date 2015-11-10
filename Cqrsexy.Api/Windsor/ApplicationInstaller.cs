@@ -23,6 +23,7 @@ namespace Cqrsexy.Api.Windsor
             container.Register(
                 Component.For<ICommandHandlerFactory>()
                     .AsFactory()
+                    .LifestyleSingleton()
                 );
 
             container.Register(
@@ -43,11 +44,7 @@ namespace Cqrsexy.Api.Windsor
                 .LifestyleTransient()
             );
 
-            container.Register(
-                Component.For<IUnitOfWork, IEventStoreUnitOfWork>()
-                .ImplementedBy<EventStoreUnitOfWork>()
-                .LifestyleBoundToNearest<IApplication>()
-            );
+            //unit of work needs to resolved by calling application
         }
     }
 }

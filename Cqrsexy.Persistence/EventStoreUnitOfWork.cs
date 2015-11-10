@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Cqrsexy.Core;
 
 namespace Cqrsexy.Persistence
@@ -9,10 +8,12 @@ namespace Cqrsexy.Persistence
     {
         private readonly Dictionary<Guid, Aggregate> trackedAggregates;
         private readonly IEventStorePresister eventStore;
+        public Guid Id { get; private set; }
         public EventStoreUnitOfWork(IEventStorePresister eventStore)
         {
             this.eventStore = eventStore;
             this.trackedAggregates = new Dictionary<Guid, Aggregate>();
+            Id = Guid.NewGuid();
         }
 
         public void RegisterForTracking(Aggregate aggregate)

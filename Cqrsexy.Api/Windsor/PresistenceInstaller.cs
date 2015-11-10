@@ -9,6 +9,8 @@ namespace Cqrsexy.Api.Windsor
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
+            //Unit of work needs to be installed based on the calling application
+            //The same instance of the unit of work is required per application call
             throw new NotImplementedException();
         }
     }

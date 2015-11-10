@@ -19,6 +19,7 @@ type AppliedForLeave = {
 type HireEmployee = {
     EmployeeId: Guid;
     Name: String;
+    HireDate: DateTime;
 } with interface ICommand
 
 type EmployeeHired = {
