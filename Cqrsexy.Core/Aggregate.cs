@@ -58,7 +58,7 @@ namespace Cqrsexy.Core
         }
 
         /// <summary>
-        /// Applies event to the aggregate if a method on the concrete class following convention "On<EventName> can be found
+        /// Applies event to the aggregate if a method on the concrete class following convention "On(EventType) can be found
         /// </summary>
         /// <param name="evt"></param>/
         private void Apply(IEvent evt)

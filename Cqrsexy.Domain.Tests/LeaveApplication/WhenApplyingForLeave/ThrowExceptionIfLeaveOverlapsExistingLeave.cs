@@ -7,8 +7,8 @@ namespace Cqrsexy.Domain.Tests.LeaveApplication.WhenApplyingForLeave
     public class ThrowExceptionIfLeaveOverlapsExistingLeave : Spesification
     {
         private readonly Guid employeeId = new Guid("809b71b5-1fc5-4039-b7fe-5d23aa58c5b4");
-        private readonly Guid leaveId = new Guid("dfewb7b5-1fc5-4039-b7fe-5d23aa58c5b4");
-        private readonly Guid existingLeaveId = new Guid("dtewb7b5-1fc5-4039-b7fe-5d23aa58c5b4");
+        private readonly Guid leaveId = new Guid("dfeeb7b5-1fc5-4039-b7fe-5d23aa58c5b4");
+        private readonly Guid existingLeaveId = new Guid("d1edb7b5-1fc5-4039-b7fe-5d23aa58c5b4");
 
         [Test]
         [ExpectedException(typeof(OverlappingLeaveException))]

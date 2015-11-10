@@ -1,25 +1,19 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using Cqrsexy.Core;
 using Cqrsexy.Domain.LeaveApplication;
-using Cqrsexy.DomainMessages;
 
 namespace Cqrsexy.Domain.Employees
 {
     public class Employee : Aggregate
     {
+        private readonly Dictionary<Guid, PendingLeave> pendingLeave = new Dictionary<Guid, PendingLeave>();
+        private readonly Dictionary<Guid, ApprovedLeave> approvedLeave = new Dictionary<Guid, ApprovedLeave>();
 
-        public Employee()
-        {
-            
-        }
-
-        private readonly List<Leave> leave;
+        public Employee() {}
 
         private Employee(Guid id, string name, DateTime hireDate)
         {
-            this.leave = new List<Leave>();
             this.ApplyChanges(new EmployeeHired(id, name, hireDate));
         }
 
@@ -45,22 +39,14 @@ namespace Cqrsexy.Domain.Employees
 
         public void On(AppliedForLeave evt)
         {
-            this.leave.Add(new PendingLeave(evt.LeaveEntryId, evt.From, evt.To));
+            this.pendingLeave.Add(evt.LeaveEntryId, new PendingLeave(evt.LeaveEntryId, evt.From, evt.To));
         }
 
         public void On(LeaveApproved evt)
         {
-            var pendingLeave = GetLeave<PendingLeave>(evt.LeaveId);
-            this.leave.Remove(pendingLeave);
-            var approvedLeave = pendingLeave.Approve(evt.ApproverId);
-            this.leave.Add(approvedLeave);
+            var leave = pendingLeave[evt.LeaveId];
+            this.pendingLeave.Remove(evt.LeaveId);
+            this.approvedLeave.Add(evt.LeaveId, leave.Approve(evt.ApproverId));
         }
-
-        private T GetLeave<T>(Guid id) where T : Leave
-        {
-            return this.leave.OfType<T>().Single(x => x.Id == id);
-        }
-
-        
     }
 }

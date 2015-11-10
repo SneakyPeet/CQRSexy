@@ -40,7 +40,7 @@ namespace Cqrsexy.Domain.Tests
         {
             this.eventStore.NewEvents().Should()
                       .Not.Be.Empty()
-                      .And.Not.Have.SameSequenceAs(expectedEvents)
+                      .And.Have.SameSequenceAs(expectedEvents)
                       .And.Have.UniqueValues();
         }
 
